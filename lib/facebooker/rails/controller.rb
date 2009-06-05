@@ -331,6 +331,13 @@ module Facebooker
         def request_comes_from_facebook?
           request_is_for_a_facebook_canvas? || request_is_facebook_ajax?
         end
+
+        # Sets active tab item for the +fb_tab_item+ helper
+        def fb_set_current_tab(name, options = {})
+          before_filter(options) do |controller|
+            controller.instance_variable_set('@fb_current_tab_item', name)
+          end
+        end
       end
     end
   end

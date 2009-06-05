@@ -347,6 +347,20 @@ module Facebooker
           concat(content_tag("fb:tabs", content), block.binding)
         end
       end
+
+      # Determine current tab item previously setted in the controller with +fb_set_current_tab_item(name)+
+      # Example:
+      # Controller:
+      #  class PlayController < ApplicationController
+      #    fb_set_current_tab :play
+      # View:
+      # <% fb_tabs do %>
+      #   <%= fb_tab_item("Play", play_path, :selected => fb_current_tab_item?(:play)) %>
+      #   <%= fb_tab_item("Invite friends", invite_path, :selected => fb_current_tab_item?(:invite)) %>
+      # <% end %>
+      def fb_current_tab_item?(name)
+        @fb_current_tab_item == name
+      end
       
       # Render an fb:tab_item tag. 
       # Use this in conjunction with fb_tabs 
