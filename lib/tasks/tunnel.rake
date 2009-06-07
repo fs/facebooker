@@ -29,7 +29,7 @@ namespace :facebooker do
     task :config => :environment do
      facebook_config = RAILS_ROOT + '/config/facebooker-tunnel.yml'
      FACEBOOKER = YAML.load_file(facebook_config)[RAILS_ENV]
-     @public_host_username = FACEBOOKER['tunnel']['public_host_username']
+     @public_host_username = FACEBOOKER['public_host_username']
      @public_host = FACEBOOKER['public_host']
      @public_port = FACEBOOKER['public_port']
      @local_port = FACEBOOKER['local_port']
